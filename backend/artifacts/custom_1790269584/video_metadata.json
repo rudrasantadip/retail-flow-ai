@@ -1,0 +1,14 @@
+{
+  "video_id": "custom_1790269584",
+  "title": "test-video-1",
+  "description": "Custom uploaded CCTV video (1280x720 @ 30.0 FPS)",
+  "filename": "uploads\\1790269584_test-video-1.mp4",
+  "resolution": {
+    "width": 1280,
+    "height": 720
+  },
+  "fps": 30.0,
+  "total_frames": 2463,
+  "duration_seconds": 82.1,
+  "sample_fps": 5
+}

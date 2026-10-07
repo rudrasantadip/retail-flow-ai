@@ -1,0 +1,165 @@
+{
+  "name": "Test Video - Top-Down Floor Map",
+  "dimensions": {
+    "width": 800,
+    "height": 800,
+    "unit": "px"
+  },
+  "camera": {
+    "x": 400,
+    "y": 780,
+    "height_m": 3.0,
+    "label": "Test Video CCTV",
+    "fov_angle": 70
+  },
+  "boundary": [
+    [
+      100,
+      120
+    ],
+    [
+      700,
+      120
+    ],
+    [
+      720,
+      720
+    ],
+    [
+      80,
+      720
+    ]
+  ],
+  "unseen_regions": [
+    {
+      "name": "Camera Blind Spot",
+      "polygon": [
+        [
+          0,
+          0
+        ],
+        [
+          800,
+          0
+        ],
+        [
+          800,
+          100
+        ],
+        [
+          0,
+          100
+        ]
+      ],
+      "reason": "Beyond Camera Angle"
+    }
+  ],
+  "shelves": [
+    {
+      "id": "shelf_left",
+      "name": "Left Aisle Shelving",
+      "type": "rack",
+      "x": 120,
+      "y": 200,
+      "width": 120,
+      "height": 420,
+      "color": "#3b82f6"
+    },
+    {
+      "id": "shelf_right",
+      "name": "Right Aisle Shelving",
+      "type": "rack",
+      "x": 560,
+      "y": 200,
+      "width": 120,
+      "height": 420,
+      "color": "#10b981"
+    }
+  ],
+  "walkable_area": [
+    [
+      240,
+      150
+    ],
+    [
+      560,
+      150
+    ],
+    [
+      600,
+      700
+    ],
+    [
+      200,
+      700
+    ]
+  ],
+  "zones": [
+    {
+      "id": "zone_main",
+      "name": "Main Shopping Corridor",
+      "bounds": {
+        "x1": 240,
+        "y1": 150,
+        "x2": 560,
+        "y2": 700
+      },
+      "color": "rgba(59, 130, 246, 0.25)"
+    }
+  ],
+  "calibration": {
+    "src_points": [
+      [
+        160,
+        125
+      ],
+      [
+        480,
+        125
+      ],
+      [
+        544,
+        306
+      ],
+      [
+        96,
+        306
+      ]
+    ],
+    "dst_points": [
+      [
+        180,
+        160
+      ],
+      [
+        620,
+        160
+      ],
+      [
+        620,
+        680
+      ],
+      [
+        180,
+        680
+      ]
+    ],
+    "homography_matrix": [
+      [
+        1.8998091603053455,
+        1.2213740458015279,
+        -207.9389312977104
+      ],
+      [
+        0.0,
+        6.045801526717562,
+        -534.6564885496189
+      ],
+      [
+        0.0,
+        0.0030534351145038202,
+        1.0
+      ]
+    ]
+  }
+}

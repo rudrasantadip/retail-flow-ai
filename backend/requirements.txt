@@ -1,0 +1,16 @@
+flask>=3.0.0
+flask-cors>=4.0.0
+opencv-python>=4.8.0
+numpy>=1.24.0
+scipy>=1.11.0
+
+# Person detection: Ultralytics YOLO (pulls in PyTorch). YOLO26 weights download on first run.
+ultralytics>=8.4.0
+# H.264 re-encode of the face-blurred video so browsers can play it (bundles an ffmpeg binary)
+imageio-ffmpeg>=0.5.1
+# Needed by facenet-pytorch (not pulled in when it is installed with --no-deps)
+tqdm>=4.66.0
+
+# Face detection for blurring: FaceNet's MTCNN from facenet-pytorch.
+# facenet-pytorch pins old torch/numpy versions, so install it WITHOUT dependencies:
+#     pip install --no-deps facenet-pytorch

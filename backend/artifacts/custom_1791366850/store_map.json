@@ -1,0 +1,165 @@
+{
+  "name": "CCTV Footage A Day in the Life of a Scottish Store Cashier  WooGlobe - WooGlobe (720p, h264) - Top-Down Floor Map",
+  "dimensions": {
+    "width": 800,
+    "height": 800,
+    "unit": "px"
+  },
+  "camera": {
+    "x": 400,
+    "y": 780,
+    "height_m": 3.0,
+    "label": "CCTV Footage A Day in the Life of a Scottish Store Cashier  WooGlobe - WooGlobe (720p, h264) CCTV",
+    "fov_angle": 70
+  },
+  "boundary": [
+    [
+      100,
+      120
+    ],
+    [
+      700,
+      120
+    ],
+    [
+      720,
+      720
+    ],
+    [
+      80,
+      720
+    ]
+  ],
+  "unseen_regions": [
+    {
+      "name": "Camera Blind Spot",
+      "polygon": [
+        [
+          0,
+          0
+        ],
+        [
+          800,
+          0
+        ],
+        [
+          800,
+          100
+        ],
+        [
+          0,
+          100
+        ]
+      ],
+      "reason": "Beyond Camera Angle"
+    }
+  ],
+  "shelves": [
+    {
+      "id": "shelf_left",
+      "name": "Left Aisle Shelving",
+      "type": "rack",
+      "x": 120,
+      "y": 200,
+      "width": 120,
+      "height": 420,
+      "color": "#3b82f6"
+    },
+    {
+      "id": "shelf_right",
+      "name": "Right Aisle Shelving",
+      "type": "rack",
+      "x": 560,
+      "y": 200,
+      "width": 120,
+      "height": 420,
+      "color": "#10b981"
+    }
+  ],
+  "walkable_area": [
+    [
+      240,
+      150
+    ],
+    [
+      560,
+      150
+    ],
+    [
+      600,
+      700
+    ],
+    [
+      200,
+      700
+    ]
+  ],
+  "zones": [
+    {
+      "id": "zone_main",
+      "name": "Main Shopping Corridor",
+      "bounds": {
+        "x1": 240,
+        "y1": 150,
+        "x2": 560,
+        "y2": 700
+      },
+      "color": "rgba(59, 130, 246, 0.25)"
+    }
+  ],
+  "calibration": {
+    "src_points": [
+      [
+        490,
+        212
+      ],
+      [
+        676,
+        213
+      ],
+      [
+        798,
+        719
+      ],
+      [
+        401,
+        700
+      ]
+    ],
+    "dst_points": [
+      [
+        180,
+        160
+      ],
+      [
+        620,
+        160
+      ],
+      [
+        620,
+        680
+      ],
+      [
+        180,
+        680
+      ]
+    ],
+    "homography_matrix": [
+      [
+        5.055677158055445,
+        1.7812654283399239,
+        -2478.0152058162407
+      ],
+      [
+        -0.0005339599162002308,
+        5.477030029203353,
+        -825.8510614419571
+      ],
+      [
+        0.0001548870105517998,
+        0.0048017253173040534,
+        1.0
+      ]
+    ]
+  }
+}

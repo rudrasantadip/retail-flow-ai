@@ -1,0 +1,920 @@
+{
+  "custom_1790269349": {
+    "id": "custom_1790269349",
+    "title": "Test Video",
+    "filename": "uploads\\1790269349_test_clip.mp4",
+    "description": "Custom uploaded CCTV video (640x360 @ 10.0 FPS)",
+    "fps_sample": 5,
+    "calibration_src": [
+      [
+        160,
+        125
+      ],
+      [
+        480,
+        125
+      ],
+      [
+        544,
+        306
+      ],
+      [
+        96,
+        306
+      ]
+    ],
+    "calibration_dst": [
+      [
+        180,
+        160
+      ],
+      [
+        620,
+        160
+      ],
+      [
+        620,
+        680
+      ],
+      [
+        180,
+        680
+      ]
+    ],
+    "store_map": {
+      "name": "Test Video - Top-Down Floor Map",
+      "dimensions": {
+        "width": 800,
+        "height": 800,
+        "unit": "px"
+      },
+      "camera": {
+        "x": 400,
+        "y": 780,
+        "height_m": 3.0,
+        "label": "Test Video CCTV",
+        "fov_angle": 70
+      },
+      "boundary": [
+        [
+          100,
+          120
+        ],
+        [
+          700,
+          120
+        ],
+        [
+          720,
+          720
+        ],
+        [
+          80,
+          720
+        ]
+      ],
+      "unseen_regions": [
+        {
+          "name": "Camera Blind Spot",
+          "polygon": [
+            [
+              0,
+              0
+            ],
+            [
+              800,
+              0
+            ],
+            [
+              800,
+              100
+            ],
+            [
+              0,
+              100
+            ]
+          ],
+          "reason": "Beyond Camera Angle"
+        }
+      ],
+      "shelves": [
+        {
+          "id": "shelf_left",
+          "name": "Left Aisle Shelving",
+          "type": "rack",
+          "x": 120,
+          "y": 200,
+          "width": 120,
+          "height": 420,
+          "color": "#3b82f6"
+        },
+        {
+          "id": "shelf_right",
+          "name": "Right Aisle Shelving",
+          "type": "rack",
+          "x": 560,
+          "y": 200,
+          "width": 120,
+          "height": 420,
+          "color": "#10b981"
+        }
+      ],
+      "walkable_area": [
+        [
+          240,
+          150
+        ],
+        [
+          560,
+          150
+        ],
+        [
+          600,
+          700
+        ],
+        [
+          200,
+          700
+        ]
+      ],
+      "zones": [
+        {
+          "id": "zone_main",
+          "name": "Main Shopping Corridor",
+          "bounds": {
+            "x1": 240,
+            "y1": 150,
+            "x2": 560,
+            "y2": 700
+          },
+          "color": "rgba(59, 130, 246, 0.25)"
+        }
+      ]
+    }
+  },
+  "custom_1790269584": {
+    "id": "custom_1790269584",
+    "title": "test-video-1",
+    "filename": "uploads\\1790269584_test-video-1.mp4",
+    "description": "Custom uploaded CCTV video (1280x720 @ 30.0 FPS)",
+    "fps_sample": 5,
+    "calibration_src": [
+      [
+        320,
+        251
+      ],
+      [
+        960,
+        251
+      ],
+      [
+        1088,
+        612
+      ],
+      [
+        192,
+        612
+      ]
+    ],
+    "calibration_dst": [
+      [
+        180,
+        160
+      ],
+      [
+        620,
+        160
+      ],
+      [
+        620,
+        680
+      ],
+      [
+        180,
+        680
+      ]
+    ],
+    "store_map": {
+      "name": "test-video-1 - Top-Down Floor Map",
+      "dimensions": {
+        "width": 800,
+        "height": 800,
+        "unit": "px"
+      },
+      "camera": {
+        "x": 400,
+        "y": 780,
+        "height_m": 3.0,
+        "label": "test-video-1 CCTV",
+        "fov_angle": 70
+      },
+      "boundary": [
+        [
+          100,
+          120
+        ],
+        [
+          700,
+          120
+        ],
+        [
+          720,
+          720
+        ],
+        [
+          80,
+          720
+        ]
+      ],
+      "unseen_regions": [
+        {
+          "name": "Camera Blind Spot",
+          "polygon": [
+            [
+              0,
+              0
+            ],
+            [
+              800,
+              0
+            ],
+            [
+              800,
+              100
+            ],
+            [
+              0,
+              100
+            ]
+          ],
+          "reason": "Beyond Camera Angle"
+        }
+      ],
+      "shelves": [
+        {
+          "id": "shelf_left",
+          "name": "Left Aisle Shelving",
+          "type": "rack",
+          "x": 120,
+          "y": 200,
+          "width": 120,
+          "height": 420,
+          "color": "#3b82f6"
+        },
+        {
+          "id": "shelf_right",
+          "name": "Right Aisle Shelving",
+          "type": "rack",
+          "x": 560,
+          "y": 200,
+          "width": 120,
+          "height": 420,
+          "color": "#10b981"
+        }
+      ],
+      "walkable_area": [
+        [
+          240,
+          150
+        ],
+        [
+          560,
+          150
+        ],
+        [
+          600,
+          700
+        ],
+        [
+          200,
+          700
+        ]
+      ],
+      "zones": [
+        {
+          "id": "zone_main",
+          "name": "Main Shopping Corridor",
+          "bounds": {
+            "x1": 240,
+            "y1": 150,
+            "x2": 560,
+            "y2": 700
+          },
+          "color": "rgba(59, 130, 246, 0.25)"
+        }
+      ]
+    }
+  },
+  "custom_1790269768": {
+    "id": "custom_1790269768",
+    "title": "test-video-1",
+    "filename": "uploads\\1790269768_test-video-2.mp4.mp4",
+    "description": "Custom uploaded CCTV video (1280x720 @ 20.0 FPS)",
+    "fps_sample": 5,
+    "calibration_src": [
+      [
+        320,
+        251
+      ],
+      [
+        960,
+        251
+      ],
+      [
+        1088,
+        612
+      ],
+      [
+        192,
+        612
+      ]
+    ],
+    "calibration_dst": [
+      [
+        180,
+        160
+      ],
+      [
+        620,
+        160
+      ],
+      [
+        620,
+        680
+      ],
+      [
+        180,
+        680
+      ]
+    ],
+    "store_map": {
+      "name": "test-video-1 - Top-Down Floor Map",
+      "dimensions": {
+        "width": 800,
+        "height": 800,
+        "unit": "px"
+      },
+      "camera": {
+        "x": 400,
+        "y": 780,
+        "height_m": 3.0,
+        "label": "test-video-1 CCTV",
+        "fov_angle": 70
+      },
+      "boundary": [
+        [
+          100,
+          120
+        ],
+        [
+          700,
+          120
+        ],
+        [
+          720,
+          720
+        ],
+        [
+          80,
+          720
+        ]
+      ],
+      "unseen_regions": [
+        {
+          "name": "Camera Blind Spot",
+          "polygon": [
+            [
+              0,
+              0
+            ],
+            [
+              800,
+              0
+            ],
+            [
+              800,
+              100
+            ],
+            [
+              0,
+              100
+            ]
+          ],
+          "reason": "Beyond Camera Angle"
+        }
+      ],
+      "shelves": [
+        {
+          "id": "shelf_left",
+          "name": "Left Aisle Shelving",
+          "type": "rack",
+          "x": 120,
+          "y": 200,
+          "width": 120,
+          "height": 420,
+          "color": "#3b82f6"
+        },
+        {
+          "id": "shelf_right",
+          "name": "Right Aisle Shelving",
+          "type": "rack",
+          "x": 560,
+          "y": 200,
+          "width": 120,
+          "height": 420,
+          "color": "#10b981"
+        }
+      ],
+      "walkable_area": [
+        [
+          240,
+          150
+        ],
+        [
+          560,
+          150
+        ],
+        [
+          600,
+          700
+        ],
+        [
+          200,
+          700
+        ]
+      ],
+      "zones": [
+        {
+          "id": "zone_main",
+          "name": "Main Shopping Corridor",
+          "bounds": {
+            "x1": 240,
+            "y1": 150,
+            "x2": 560,
+            "y2": 700
+          },
+          "color": "rgba(59, 130, 246, 0.25)"
+        }
+      ]
+    }
+  },
+  "custom_1791366554": {
+    "id": "custom_1791366554",
+    "title": "CCTV Footage A Day in the Life of a Scottish Store Cashier  WooGlobe - WooGlobe (720p, h264)",
+    "filename": "uploads\\1791366554_CCTV_Footage_A_Day_in_the_Life_of_a_Scottish_Store_Cashier_WooGlobe_-_WooGlobe_720p_h264.mp4",
+    "description": "Custom uploaded CCTV video (1280x720 @ 30.0 FPS)",
+    "fps_sample": 5,
+    "calibration_src": [
+      [
+        320,
+        251
+      ],
+      [
+        960,
+        251
+      ],
+      [
+        1088,
+        612
+      ],
+      [
+        192,
+        612
+      ]
+    ],
+    "calibration_dst": [
+      [
+        180,
+        160
+      ],
+      [
+        620,
+        160
+      ],
+      [
+        620,
+        680
+      ],
+      [
+        180,
+        680
+      ]
+    ],
+    "store_map": {
+      "name": "CCTV Footage A Day in the Life of a Scottish Store Cashier  WooGlobe - WooGlobe (720p, h264) - Top-Down Floor Map",
+      "dimensions": {
+        "width": 800,
+        "height": 800,
+        "unit": "px"
+      },
+      "camera": {
+        "x": 400,
+        "y": 780,
+        "height_m": 3.0,
+        "label": "CCTV Footage A Day in the Life of a Scottish Store Cashier  WooGlobe - WooGlobe (720p, h264) CCTV",
+        "fov_angle": 70
+      },
+      "boundary": [
+        [
+          100,
+          120
+        ],
+        [
+          700,
+          120
+        ],
+        [
+          720,
+          720
+        ],
+        [
+          80,
+          720
+        ]
+      ],
+      "unseen_regions": [
+        {
+          "name": "Camera Blind Spot",
+          "polygon": [
+            [
+              0,
+              0
+            ],
+            [
+              800,
+              0
+            ],
+            [
+              800,
+              100
+            ],
+            [
+              0,
+              100
+            ]
+          ],
+          "reason": "Beyond Camera Angle"
+        }
+      ],
+      "shelves": [
+        {
+          "id": "shelf_left",
+          "name": "Left Aisle Shelving",
+          "type": "rack",
+          "x": 120,
+          "y": 200,
+          "width": 120,
+          "height": 420,
+          "color": "#3b82f6"
+        },
+        {
+          "id": "shelf_right",
+          "name": "Right Aisle Shelving",
+          "type": "rack",
+          "x": 560,
+          "y": 200,
+          "width": 120,
+          "height": 420,
+          "color": "#10b981"
+        }
+      ],
+      "walkable_area": [
+        [
+          240,
+          150
+        ],
+        [
+          560,
+          150
+        ],
+        [
+          600,
+          700
+        ],
+        [
+          200,
+          700
+        ]
+      ],
+      "zones": [
+        {
+          "id": "zone_main",
+          "name": "Main Shopping Corridor",
+          "bounds": {
+            "x1": 240,
+            "y1": 150,
+            "x2": 560,
+            "y2": 700
+          },
+          "color": "rgba(59, 130, 246, 0.25)"
+        }
+      ]
+    }
+  },
+  "custom_1791366776": {
+    "id": "custom_1791366776",
+    "title": "CCTV Footage A Day in the Life of a Scottish Store Cashier  WooGlobe - WooGlobe (720p, h264)",
+    "filename": "uploads\\1791366776_CCTV_Footage_A_Day_in_the_Life_of_a_Scottish_Store_Cashier_WooGlobe_-_WooGlobe_720p_h264.mp4",
+    "description": "Custom uploaded CCTV video (1280x720 @ 30.0 FPS)",
+    "fps_sample": 5,
+    "calibration_src": [
+      [
+        320,
+        251
+      ],
+      [
+        960,
+        251
+      ],
+      [
+        1088,
+        612
+      ],
+      [
+        192,
+        612
+      ]
+    ],
+    "calibration_dst": [
+      [
+        180,
+        160
+      ],
+      [
+        620,
+        160
+      ],
+      [
+        620,
+        680
+      ],
+      [
+        180,
+        680
+      ]
+    ],
+    "store_map": {
+      "name": "CCTV Footage A Day in the Life of a Scottish Store Cashier  WooGlobe - WooGlobe (720p, h264) - Top-Down Floor Map",
+      "dimensions": {
+        "width": 800,
+        "height": 800,
+        "unit": "px"
+      },
+      "camera": {
+        "x": 400,
+        "y": 780,
+        "height_m": 3.0,
+        "label": "CCTV Footage A Day in the Life of a Scottish Store Cashier  WooGlobe - WooGlobe (720p, h264) CCTV",
+        "fov_angle": 70
+      },
+      "boundary": [
+        [
+          100,
+          120
+        ],
+        [
+          700,
+          120
+        ],
+        [
+          720,
+          720
+        ],
+        [
+          80,
+          720
+        ]
+      ],
+      "unseen_regions": [
+        {
+          "name": "Camera Blind Spot",
+          "polygon": [
+            [
+              0,
+              0
+            ],
+            [
+              800,
+              0
+            ],
+            [
+              800,
+              100
+            ],
+            [
+              0,
+              100
+            ]
+          ],
+          "reason": "Beyond Camera Angle"
+        }
+      ],
+      "shelves": [
+        {
+          "id": "shelf_left",
+          "name": "Left Aisle Shelving",
+          "type": "rack",
+          "x": 120,
+          "y": 200,
+          "width": 120,
+          "height": 420,
+          "color": "#3b82f6"
+        },
+        {
+          "id": "shelf_right",
+          "name": "Right Aisle Shelving",
+          "type": "rack",
+          "x": 560,
+          "y": 200,
+          "width": 120,
+          "height": 420,
+          "color": "#10b981"
+        }
+      ],
+      "walkable_area": [
+        [
+          240,
+          150
+        ],
+        [
+          560,
+          150
+        ],
+        [
+          600,
+          700
+        ],
+        [
+          200,
+          700
+        ]
+      ],
+      "zones": [
+        {
+          "id": "zone_main",
+          "name": "Main Shopping Corridor",
+          "bounds": {
+            "x1": 240,
+            "y1": 150,
+            "x2": 560,
+            "y2": 700
+          },
+          "color": "rgba(59, 130, 246, 0.25)"
+        }
+      ]
+    }
+  },
+  "custom_1791366850": {
+    "id": "custom_1791366850",
+    "title": "CCTV Footage A Day in the Life of a Scottish Store Cashier  WooGlobe - WooGlobe (720p, h264)",
+    "filename": "uploads\\1791366850_CCTV_Footage_A_Day_in_the_Life_of_a_Scottish_Store_Cashier_WooGlobe_-_WooGlobe_720p_h264.mp4",
+    "description": "Custom uploaded CCTV video (1280x720 @ 30.0 FPS)",
+    "fps_sample": 5,
+    "calibration_src": [
+      [
+        320,
+        251
+      ],
+      [
+        960,
+        251
+      ],
+      [
+        1088,
+        612
+      ],
+      [
+        192,
+        612
+      ]
+    ],
+    "calibration_dst": [
+      [
+        180,
+        160
+      ],
+      [
+        620,
+        160
+      ],
+      [
+        620,
+        680
+      ],
+      [
+        180,
+        680
+      ]
+    ],
+    "store_map": {
+      "name": "CCTV Footage A Day in the Life of a Scottish Store Cashier  WooGlobe - WooGlobe (720p, h264) - Top-Down Floor Map",
+      "dimensions": {
+        "width": 800,
+        "height": 800,
+        "unit": "px"
+      },
+      "camera": {
+        "x": 400,
+        "y": 780,
+        "height_m": 3.0,
+        "label": "CCTV Footage A Day in the Life of a Scottish Store Cashier  WooGlobe - WooGlobe (720p, h264) CCTV",
+        "fov_angle": 70
+      },
+      "boundary": [
+        [
+          100,
+          120
+        ],
+        [
+          700,
+          120
+        ],
+        [
+          720,
+          720
+        ],
+        [
+          80,
+          720
+        ]
+      ],
+      "unseen_regions": [
+        {
+          "name": "Camera Blind Spot",
+          "polygon": [
+            [
+              0,
+              0
+            ],
+            [
+              800,
+              0
+            ],
+            [
+              800,
+              100
+            ],
+            [
+              0,
+              100
+            ]
+          ],
+          "reason": "Beyond Camera Angle"
+        }
+      ],
+      "shelves": [
+        {
+          "id": "shelf_left",
+          "name": "Left Aisle Shelving",
+          "type": "rack",
+          "x": 120,
+          "y": 200,
+          "width": 120,
+          "height": 420,
+          "color": "#3b82f6"
+        },
+        {
+          "id": "shelf_right",
+          "name": "Right Aisle Shelving",
+          "type": "rack",
+          "x": 560,
+          "y": 200,
+          "width": 120,
+          "height": 420,
+          "color": "#10b981"
+        }
+      ],
+      "walkable_area": [
+        [
+          240,
+          150
+        ],
+        [
+          560,
+          150
+        ],
+        [
+          600,
+          700
+        ],
+        [
+          200,
+          700
+        ]
+      ],
+      "zones": [
+        {
+          "id": "zone_main",
+          "name": "Main Shopping Corridor",
+          "bounds": {
+            "x1": 240,
+            "y1": 150,
+            "x2": 560,
+            "y2": 700
+          },
+          "color": "rgba(59, 130, 246, 0.25)"
+        }
+      ]
+    }
+  }
+}

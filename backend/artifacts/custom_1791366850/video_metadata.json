@@ -1,0 +1,30 @@
+{
+  "video_id": "custom_1791366850",
+  "title": "CCTV Footage A Day in the Life of a Scottish Store Cashier  WooGlobe - WooGlobe (720p, h264)",
+  "description": "Custom uploaded CCTV video (1280x720 @ 30.0 FPS)",
+  "filename": "uploads\\1791366850_CCTV_Footage_A_Day_in_the_Life_of_a_Scottish_Store_Cashier_WooGlobe_-_WooGlobe_720p_h264.mp4",
+  "resolution": {
+    "width": 1280,
+    "height": 720
+  },
+  "fps": 29.97,
+  "total_frames": 4200,
+  "duration_seconds": 140.14,
+  "sample_fps": 5,
+  "detector": {
+    "model": "yolo26s.pt",
+    "classes": [
+      "person"
+    ],
+    "confidence_threshold": 0.35
+  },
+  "privacy": {
+    "face_blur_enabled": true,
+    "face_model": "FaceNet MTCNN (facenet-pytorch)",
+    "blurred_video": "blurred.mp4",
+    "browser_playable": true,
+    "face_detections": 70,
+    "frames_blurred": 1173,
+    "generated_at": 1791367285
+  }
+}

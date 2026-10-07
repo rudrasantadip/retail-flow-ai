@@ -1,0 +1,25 @@
+{
+  "total_tracked_customers": 107,
+  "average_dwell_time_seconds": 6.9,
+  "max_dwell_time_seconds": 35.8,
+  "zone_breakdown": {
+    "Checkout Line & Register": {
+      "count": 8,
+      "color": "rgba(239, 68, 68, 0.25)"
+    },
+    "Center Browsing Promenade": {
+      "count": 16,
+      "color": "rgba(245, 158, 11, 0.25)"
+    },
+    "Main Wall Shelf Browsing Zone": {
+      "count": 11,
+      "color": "rgba(16, 185, 129, 0.25)"
+    },
+    "Store Entrance & Mat Area": {
+      "count": 14,
+      "color": "rgba(59, 130, 246, 0.25)"
+    }
+  },
+  "processed_frames": 484,
+  "duration_analyzed": 111.05
+}

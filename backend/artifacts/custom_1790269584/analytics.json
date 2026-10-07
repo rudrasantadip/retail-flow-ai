@@ -1,0 +1,13 @@
+{
+  "total_tracked_customers": 21,
+  "average_dwell_time_seconds": 5.7,
+  "max_dwell_time_seconds": 12.8,
+  "zone_breakdown": {
+    "Main Shopping Corridor": {
+      "count": 9,
+      "color": "rgba(59, 130, 246, 0.25)"
+    }
+  },
+  "processed_frames": 410,
+  "duration_analyzed": 82.1
+}

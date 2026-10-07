@@ -1,0 +1,251 @@
+{
+  "name": "Scottish Store - Checkout & Crisp Aisle",
+  "dimensions": {
+    "width": 800,
+    "height": 800,
+    "unit": "px"
+  },
+  "camera": {
+    "x": 400,
+    "y": 780,
+    "height_m": 2.8,
+    "label": "CCTV Cam #1 (High-Angle Aisle)",
+    "fov_angle": 65
+  },
+  "boundary": [
+    [
+      200,
+      100
+    ],
+    [
+      600,
+      100
+    ],
+    [
+      680,
+      750
+    ],
+    [
+      120,
+      750
+    ]
+  ],
+  "unseen_regions": [
+    {
+      "name": "Backroom / Storage",
+      "polygon": [
+        [
+          0,
+          0
+        ],
+        [
+          200,
+          0
+        ],
+        [
+          200,
+          250
+        ],
+        [
+          0,
+          250
+        ]
+      ],
+      "reason": "Behind Cashier Partition"
+    },
+    {
+      "name": "Blind Spot (Right Exterior)",
+      "polygon": [
+        [
+          680,
+          400
+        ],
+        [
+          800,
+          400
+        ],
+        [
+          800,
+          800
+        ],
+        [
+          680,
+          800
+        ]
+      ],
+      "reason": "Window / Wall Occlusion"
+    },
+    {
+      "name": "Left Perimeter",
+      "polygon": [
+        [
+          0,
+          250
+        ],
+        [
+          120,
+          250
+        ],
+        [
+          120,
+          800
+        ],
+        [
+          0,
+          800
+        ]
+      ],
+      "reason": "Behind Wall Shelving"
+    }
+  ],
+  "shelves": [
+    {
+      "id": "shelf_left_counter",
+      "name": "Checkout Counter & Confectionery",
+      "type": "counter",
+      "x": 160,
+      "y": 240,
+      "width": 140,
+      "height": 450,
+      "color": "#3b82f6"
+    },
+    {
+      "id": "shelf_cashier_desk",
+      "name": "Cashier Till & Register Desk",
+      "type": "checkout",
+      "x": 280,
+      "y": 110,
+      "width": 240,
+      "height": 90,
+      "color": "#ef4444"
+    },
+    {
+      "id": "shelf_right_rack",
+      "name": "Crisps & Snacks Display Rack",
+      "type": "rack",
+      "x": 500,
+      "y": 250,
+      "width": 150,
+      "height": 440,
+      "color": "#10b981"
+    },
+    {
+      "id": "shelf_window_display",
+      "name": "Window Promotion Display",
+      "type": "promo",
+      "x": 670,
+      "y": 140,
+      "width": 70,
+      "height": 550,
+      "color": "#f59e0b"
+    }
+  ],
+  "walkable_area": [
+    [
+      310,
+      200
+    ],
+    [
+      490,
+      200
+    ],
+    [
+      490,
+      720
+    ],
+    [
+      310,
+      720
+    ]
+  ],
+  "zones": [
+    {
+      "id": "zone_cashier",
+      "name": "Cashier / Payment Zone",
+      "bounds": {
+        "x1": 290,
+        "y1": 180,
+        "x2": 510,
+        "y2": 320
+      },
+      "color": "rgba(239, 68, 68, 0.25)"
+    },
+    {
+      "id": "zone_mid_aisle",
+      "name": "Crisp Aisle Mid-Section",
+      "bounds": {
+        "x1": 300,
+        "y1": 320,
+        "x2": 500,
+        "y2": 520
+      },
+      "color": "rgba(16, 185, 129, 0.25)"
+    },
+    {
+      "id": "zone_entrance",
+      "name": "Aisle Entrance / Queue",
+      "bounds": {
+        "x1": 300,
+        "y1": 520,
+        "x2": 500,
+        "y2": 720
+      },
+      "color": "rgba(59, 130, 246, 0.25)"
+    }
+  ],
+  "calibration": {
+    "src_points": [
+      [
+        516,
+        232
+      ],
+      [
+        643,
+        237
+      ],
+      [
+        689,
+        655
+      ],
+      [
+        441,
+        649
+      ]
+    ],
+    "dst_points": [
+      [
+        320,
+        220
+      ],
+      [
+        480,
+        220
+      ],
+      [
+        480,
+        680
+      ],
+      [
+        320,
+        680
+      ]
+    ],
+    "homography_matrix": [
+      [
+        2.2391602822784784,
+        1.7659674982474718,
+        -970.4953639464826
+      ],
+      [
+        -0.20809093924333538,
+        4.909245019965666,
+        -622.771556586918
+      ],
+      [
+        -0.0002334032793556005,
+        0.0042181485828370465,
+        0.9999999999999999
+      ]
+    ]
+  }
+}

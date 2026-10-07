@@ -1,0 +1,262 @@
+{
+  "name": "HD Retail Store - Main Floor",
+  "dimensions": {
+    "width": 800,
+    "height": 800,
+    "unit": "px"
+  },
+  "camera": {
+    "x": 400,
+    "y": 790,
+    "height_m": 3.2,
+    "label": "CCTV Cam #2 (Wide-Angle Ceiling)",
+    "fov_angle": 75
+  },
+  "boundary": [
+    [
+      100,
+      120
+    ],
+    [
+      720,
+      120
+    ],
+    [
+      750,
+      720
+    ],
+    [
+      80,
+      720
+    ]
+  ],
+  "unseen_regions": [
+    {
+      "name": "Back Wall / Staff Room",
+      "polygon": [
+        [
+          0,
+          0
+        ],
+        [
+          800,
+          0
+        ],
+        [
+          800,
+          100
+        ],
+        [
+          0,
+          100
+        ]
+      ],
+      "reason": "Beyond Camera FOV"
+    },
+    {
+      "name": "Behind Left Counter",
+      "polygon": [
+        [
+          0,
+          100
+        ],
+        [
+          120,
+          100
+        ],
+        [
+          120,
+          700
+        ],
+        [
+          0,
+          700
+        ]
+      ],
+      "reason": "Blocked by POS till partition"
+    },
+    {
+      "name": "Far Right Blind Spot",
+      "polygon": [
+        [
+          740,
+          100
+        ],
+        [
+          800,
+          100
+        ],
+        [
+          800,
+          800
+        ],
+        [
+          740,
+          800
+        ]
+      ],
+      "reason": "Behind high product shelving"
+    }
+  ],
+  "shelves": [
+    {
+      "id": "shelf_left_pos",
+      "name": "Checkout POS Counter & Till",
+      "type": "checkout",
+      "x": 110,
+      "y": 180,
+      "width": 110,
+      "height": 380,
+      "color": "#ef4444"
+    },
+    {
+      "id": "shelf_center_promo",
+      "name": "Center Promotional Red Towers",
+      "type": "promo",
+      "x": 320,
+      "y": 200,
+      "width": 150,
+      "height": 280,
+      "color": "#f59e0b"
+    },
+    {
+      "id": "shelf_wire_stands",
+      "name": "Center Wire Carousel Displays",
+      "type": "rack",
+      "x": 330,
+      "y": 510,
+      "width": 130,
+      "height": 140,
+      "color": "#8b5cf6"
+    },
+    {
+      "id": "shelf_right_wall",
+      "name": "Main Wall Product Shelving",
+      "type": "wall_shelf",
+      "x": 580,
+      "y": 140,
+      "width": 140,
+      "height": 550,
+      "color": "#10b981"
+    }
+  ],
+  "walkable_area": [
+    [
+      220,
+      150
+    ],
+    [
+      580,
+      150
+    ],
+    [
+      720,
+      690
+    ],
+    [
+      130,
+      690
+    ]
+  ],
+  "zones": [
+    {
+      "id": "zone_pos_line",
+      "name": "Checkout Line & Register",
+      "bounds": {
+        "x1": 130,
+        "y1": 180,
+        "x2": 280,
+        "y2": 450
+      },
+      "color": "rgba(239, 68, 68, 0.25)"
+    },
+    {
+      "id": "zone_center_aisle",
+      "name": "Center Browsing Promenade",
+      "bounds": {
+        "x1": 270,
+        "y1": 160,
+        "x2": 520,
+        "y2": 660
+      },
+      "color": "rgba(245, 158, 11, 0.25)"
+    },
+    {
+      "id": "zone_wall_shelf",
+      "name": "Main Wall Shelf Browsing Zone",
+      "bounds": {
+        "x1": 500,
+        "y1": 150,
+        "x2": 680,
+        "y2": 660
+      },
+      "color": "rgba(16, 185, 129, 0.25)"
+    },
+    {
+      "id": "zone_entrance_lobby",
+      "name": "Store Entrance & Mat Area",
+      "bounds": {
+        "x1": 500,
+        "y1": 580,
+        "x2": 720,
+        "y2": 720
+      },
+      "color": "rgba(59, 130, 246, 0.25)"
+    }
+  ],
+  "calibration": {
+    "src_points": [
+      [
+        260,
+        270
+      ],
+      [
+        740,
+        270
+      ],
+      [
+        940,
+        670
+      ],
+      [
+        120,
+        670
+      ]
+    ],
+    "dst_points": [
+      [
+        180,
+        160
+      ],
+      [
+        660,
+        160
+      ],
+      [
+        660,
+        680
+      ],
+      [
+        180,
+        680
+      ]
+    ],
+    "homography_matrix": [
+      [
+        1.9161676646706505,
+        1.2814371257484962,
+        -499.2814371257449
+      ],
+      [
+        -2.431837254542204e-16,
+        4.798403193612752,
+        -988.9820359281381
+      ],
+      [
+        -5.552657410542691e-19,
+        0.0033932135728542735,
+        1.0
+      ]
+    ]
+  }
+}
