@@ -1,21 +1,24 @@
 {
-  "total_tracked_customers": 37,
-  "average_dwell_time_seconds": 3.8,
-  "max_dwell_time_seconds": 15.0,
+  "total_tracked_customers": 12,
+  "average_dwell_time_seconds": 7.4,
+  "max_dwell_time_seconds": 39.0,
   "zone_breakdown": {
     "Cashier / Payment Zone": {
       "count": 5,
       "color": "rgba(239, 68, 68, 0.25)"
     },
     "Crisp Aisle Mid-Section": {
-      "count": 1,
+      "count": 0,
       "color": "rgba(16, 185, 129, 0.25)"
     },
     "Aisle Entrance / Queue": {
-      "count": 1,
+      "count": 0,
       "color": "rgba(59, 130, 246, 0.25)"
     }
   },
   "processed_frames": 700,
-  "duration_analyzed": 140.14
+  "duration_analyzed": 140.14,
+  "person_detections": 459,
+  "faces_blurred": 70,
+  "detector_model": "yolo26s.pt"
 }

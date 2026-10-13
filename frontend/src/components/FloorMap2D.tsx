@@ -18,16 +18,50 @@ interface FloorMap2DProps {
   currentTime: number;
   heatmapConfig: HeatmapConfig;
   onHoverItem?: (item: any) => void;
+  /** Called continuously while a fixture is being dragged / resized. */
+  onShelfChange?: (id: string, patch: Partial<Pick<Shelf, 'x' | 'y' | 'width' | 'height'>>) => void;
+  /** Called once when a drag / resize gesture finishes (use it to persist). */
+  onShelfCommit?: (id: string) => void;
 }
+
+type DragHandle = 'move' | 'n' | 's' | 'e' | 'w' | 'ne' | 'nw' | 'se' | 'sw';
+
+const MIN_SHELF_SIZE = 20;
+const HANDLE_SIZE = 12;
+
+const HANDLE_CURSORS: Record<Exclude<DragHandle, 'move'>, string> = {
+  n: 'ns-resize',
+  s: 'ns-resize',
+  e: 'ew-resize',
+  w: 'ew-resize',
+  ne: 'nesw-resize',
+  sw: 'nesw-resize',
+  nw: 'nwse-resize',
+  se: 'nwse-resize'
+};
+
+const clamp = (v: number, lo: number, hi: number) => Math.min(Math.max(v, lo), hi);
 
 export const FloorMap2D: React.FC<FloorMap2DProps> = ({
   storeMap,
   tracks,
   currentTime,
   heatmapConfig,
-  onHoverItem
+  onHoverItem,
+  onShelfChange,
+  onShelfCommit
 }) => {
   const heatmapCanvasRef = useRef<HTMLCanvasElement | null>(null);
+  const svgRef = useRef<SVGSVGElement | null>(null);
+  const dragRef = useRef<{
+    id: string;
+    handle: DragHandle;
+    startX: number;
+    startY: number;
+    orig: { x: number; y: number; width: number; height: number };
+  } | null>(null);
+  const [selectedShelfId, setSelectedShelfId] = useState<string | null>(null);
+  const [isDragging, setIsDragging] = useState(false);
   const [hoveredShelf, setHoveredShelf] = useState<Shelf | null>(null);
   const [hoveredZone, setHoveredZone] = useState<Zone | null>(null);
   const [hoveredCustomer, setHoveredCustomer] = useState<any | null>(null);
@@ -112,6 +146,94 @@ export const FloorMap2D: React.FC<FloorMap2DProps> = ({
     return list;
   }, [tracks, currentTime]);
 
+  // Convert a pointer event into SVG (map) coordinates, independent of CSS scaling
+  const toSvgPoint = (e: React.PointerEvent): { x: number; y: number } | null => {
+    const svg = svgRef.current;
+    const ctm = svg?.getScreenCTM();
+    if (!svg || !ctm) return null;
+    const pt = svg.createSVGPoint();
+    pt.x = e.clientX;
+    pt.y = e.clientY;
+    const p = pt.matrixTransform(ctm.inverse());
+    return { x: p.x, y: p.y };
+  };
+
+  const beginDrag = (e: React.PointerEvent, shelf: Shelf, handle: DragHandle) => {
+    if (e.button !== undefined && e.button !== 0) return;
+    e.stopPropagation();
+    e.preventDefault();
+    const pt = toSvgPoint(e);
+    if (!pt) return;
+    (e.currentTarget as Element).setPointerCapture(e.pointerId);
+    dragRef.current = {
+      id: shelf.id,
+      handle,
+      startX: pt.x,
+      startY: pt.y,
+      orig: { x: shelf.x, y: shelf.y, width: shelf.width, height: shelf.height }
+    };
+    setSelectedShelfId(shelf.id);
+    setIsDragging(true);
+  };
+
+  const handleDragMove = (e: React.PointerEvent) => {
+    const drag = dragRef.current;
+    if (!drag || !storeMap || !onShelfChange) return;
+    const pt = toSvgPoint(e);
+    if (!pt) return;
+
+    const dx = pt.x - drag.startX;
+    const dy = pt.y - drag.startY;
+    const { x, y, width, height } = drag.orig;
+    const W = storeMap.dimensions.width;
+    const H = storeMap.dimensions.height;
+
+    let nx = x;
+    let ny = y;
+    let nw = width;
+    let nh = height;
+
+    if (drag.handle === 'move') {
+      nx = clamp(x + dx, 0, W - width);
+      ny = clamp(y + dy, 0, H - height);
+    } else {
+      // Horizontal edges (length)
+      if (drag.handle.includes('w')) {
+        nx = clamp(x + dx, 0, x + width - MIN_SHELF_SIZE);
+        nw = x + width - nx;
+      } else if (drag.handle.includes('e')) {
+        nw = clamp(width + dx, MIN_SHELF_SIZE, W - x);
+      }
+      // Vertical edges (breadth)
+      if (drag.handle.includes('n')) {
+        ny = clamp(y + dy, 0, y + height - MIN_SHELF_SIZE);
+        nh = y + height - ny;
+      } else if (drag.handle.includes('s')) {
+        nh = clamp(height + dy, MIN_SHELF_SIZE, H - y);
+      }
+    }
+
+    onShelfChange(drag.id, {
+      x: Math.round(nx),
+      y: Math.round(ny),
+      width: Math.round(nw),
+      height: Math.round(nh)
+    });
+  };
+
+  const endDrag = (e: React.PointerEvent) => {
+    const drag = dragRef.current;
+    if (!drag) return;
+    dragRef.current = null;
+    setIsDragging(false);
+    try {
+      (e.target as Element).releasePointerCapture?.(e.pointerId);
+    } catch {
+      /* capture already released */
+    }
+    onShelfCommit?.(drag.id);
+  };
+
   if (!storeMap) {
     return (
       <div className="w-full h-96 flex items-center justify-center bg-slate-900 border border-slate-800 rounded-xl text-slate-500">
@@ -163,8 +285,13 @@ export const FloorMap2D: React.FC<FloorMap2DProps> = ({
 
         {/* Layer 2: Interactive SVG Vector Layout */}
         <svg
+          ref={svgRef}
           viewBox={viewBox}
           className="absolute inset-0 w-full h-full object-contain z-20 select-none"
+          style={{ touchAction: 'none' }}
+          onPointerMove={handleDragMove}
+          onPointerUp={endDrag}
+          onPointerCancel={endDrag}
         >
           <defs>
             {/* Unseen area hatching pattern */}
@@ -190,7 +317,12 @@ export const FloorMap2D: React.FC<FloorMap2DProps> = ({
           </defs>
 
           {/* Background Grid */}
-          <rect width="100%" height="100%" fill="url(#floorGrid)" />
+          <rect
+            width="100%"
+            height="100%"
+            fill="url(#floorGrid)"
+            onPointerDown={() => setSelectedShelfId(null)}
+          />
 
           {/* Camera-Visible Boundary Polygon */}
           {boundary && boundary.length > 0 && (
@@ -335,7 +467,8 @@ export const FloorMap2D: React.FC<FloorMap2DProps> = ({
               return (
                 <g
                   key={shelf.id}
-                  className="cursor-pointer transition-all"
+                  style={{ cursor: isDragging && selectedShelfId === shelf.id ? 'grabbing' : 'grab' }}
+                  onPointerDown={(e) => beginDrag(e, shelf, 'move')}
                   onMouseEnter={() => setHoveredShelf(shelf)}
                   onMouseLeave={() => setHoveredShelf(null)}
                 >
@@ -346,8 +479,8 @@ export const FloorMap2D: React.FC<FloorMap2DProps> = ({
                     height={shelf.height}
                     fill={shelf.color || '#3b82f6'}
                     fillOpacity={isHovered ? 0.95 : 0.8}
-                    stroke={isHovered ? '#ffffff' : 'rgba(255,255,255,0.3)'}
-                    strokeWidth={isHovered ? 2.5 : 1.5}
+                    stroke={isHovered || selectedShelfId === shelf.id ? '#ffffff' : 'rgba(255,255,255,0.3)'}
+                    strokeWidth={isHovered || selectedShelfId === shelf.id ? 2.5 : 1.5}
                     rx="5"
                     filter="drop-shadow(0 2px 4px rgba(0,0,0,0.5))"
                   />
@@ -370,6 +503,7 @@ export const FloorMap2D: React.FC<FloorMap2DProps> = ({
                     fontFamily="Inter, sans-serif"
                     fill="#ffffff"
                     filter="drop-shadow(0 1px 2px rgba(0,0,0,0.8))"
+                    pointerEvents="none"
                   >
                     {shelf.name}
                   </text>
@@ -380,6 +514,7 @@ export const FloorMap2D: React.FC<FloorMap2DProps> = ({
                     fontSize="8.5"
                     fontFamily="monospace"
                     fill="rgba(255,255,255,0.8)"
+                    pointerEvents="none"
                   >
                     [{shelf.type.toUpperCase()}]
                   </text>
@@ -465,6 +600,78 @@ export const FloorMap2D: React.FC<FloorMap2DProps> = ({
                 </g>
               );
             })}
+          {/* Resize handles for the selected fixture (drawn on top of everything) */}
+          {heatmapConfig.showShelves &&
+            selectedShelfId &&
+            (() => {
+              const shelf = shelves?.find((sh) => sh.id === selectedShelfId);
+              if (!shelf) return null;
+              const { x, y, width: w, height: h } = shelf;
+              const pts: Array<[Exclude<DragHandle, 'move'>, number, number]> = [
+                ['nw', x, y],
+                ['n', x + w / 2, y],
+                ['ne', x + w, y],
+                ['e', x + w, y + h / 2],
+                ['se', x + w, y + h],
+                ['s', x + w / 2, y + h],
+                ['sw', x, y + h],
+                ['w', x, y + h / 2]
+              ];
+              return (
+                <g>
+                  <rect
+                    x={x}
+                    y={y}
+                    width={w}
+                    height={h}
+                    fill="none"
+                    stroke="#818cf8"
+                    strokeWidth="1.5"
+                    strokeDasharray="5 3"
+                    pointerEvents="none"
+                  />
+                  {pts.map(([handle, hx, hy]) => (
+                    <rect
+                      key={handle}
+                      x={hx - HANDLE_SIZE / 2}
+                      y={hy - HANDLE_SIZE / 2}
+                      width={HANDLE_SIZE}
+                      height={HANDLE_SIZE}
+                      rx="2"
+                      fill="#ffffff"
+                      stroke="#4f46e5"
+                      strokeWidth="2"
+                      style={{ cursor: HANDLE_CURSORS[handle] }}
+                      onPointerDown={(e) => beginDrag(e, shelf, handle)}
+                    />
+                  ))}
+                  {/* Live size read-out while dragging */}
+                  {isDragging && (
+                    <g pointerEvents="none">
+                      <rect
+                        x={x + w / 2 - 38}
+                        y={Math.max(2, y - 24)}
+                        width="76"
+                        height="18"
+                        rx="4"
+                        fill="rgba(15, 23, 42, 0.95)"
+                        stroke="#818cf8"
+                      />
+                      <text
+                        x={x + w / 2}
+                        y={Math.max(2, y - 24) + 12.5}
+                        textAnchor="middle"
+                        fontSize="10"
+                        fontFamily="monospace"
+                        fill="#e0e7ff"
+                      >
+                        {w} × {h}
+                      </text>
+                    </g>
+                  )}
+                </g>
+              );
+            })()}
         </svg>
 
         {/* Hover Information Tooltip */}

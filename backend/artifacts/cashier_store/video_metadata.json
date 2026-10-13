@@ -10,5 +10,21 @@
   "fps": 29.97,
   "total_frames": 4200,
   "duration_seconds": 140.14,
-  "sample_fps": 5
+  "sample_fps": 5,
+  "detector": {
+    "model": "yolo26s.pt",
+    "classes": [
+      "person"
+    ],
+    "confidence_threshold": 0.35
+  },
+  "privacy": {
+    "face_blur_enabled": true,
+    "face_model": "FaceNet MTCNN (facenet-pytorch)",
+    "blurred_video": "blurred.mp4",
+    "browser_playable": true,
+    "face_detections": 70,
+    "frames_blurred": 1173,
+    "generated_at": 1791864947
+  }
 }

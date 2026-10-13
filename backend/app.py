@@ -254,6 +254,37 @@ def reproject_calibration():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
+@app.route("/api/store_map/<video_id>/shelves", methods=["POST"])
+def save_shelves(video_id):
+    """Persist user-edited fixture geometry (drag / resize in the 2D map) into store_map.json."""
+    if video_id not in get_all_videos():
+        return jsonify({"error": "Unknown video"}), 404
+
+    payload = request.get_json() or {}
+    shelves = payload.get("shelves")
+    if not isinstance(shelves, list):
+        return jsonify({"error": "Missing 'shelves' list"}), 400
+
+    file_path = os.path.join(ARTIFACTS_DIR, video_id, "store_map.json")
+    if not os.path.exists(file_path):
+        return jsonify({"error": "store_map.json not generated yet"}), 404
+
+    with open(file_path, "r", encoding="utf-8") as f:
+        store_map = json.load(f)
+
+    existing = {sh.get("id"): sh for sh in store_map.get("shelves", [])}
+    for incoming in shelves:
+        target = existing.get(incoming.get("id"))
+        if not target:
+            continue
+        for key in ("x", "y", "width", "height"):
+            if isinstance(incoming.get(key), (int, float)):
+                target[key] = incoming[key]
+
+    with open(file_path, "w", encoding="utf-8") as f:
+        json.dump(store_map, f, indent=2)
+    return jsonify({"status": "saved", "shelves": store_map.get("shelves", [])})
+
 @app.route("/api/thumbnails/<video_id>", methods=["GET"])
 def get_thumbnail(video_id):
     """First frame of the video (used for floor calibration), with faces blurred."""

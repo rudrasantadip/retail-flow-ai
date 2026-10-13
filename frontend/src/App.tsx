@@ -3,6 +3,7 @@ import {
   VideoItem, 
   VideoMeta, 
   StoreMap, 
+  Shelf,
   Track, 
   Analytics, 
   HeatmapConfig,
@@ -226,6 +227,32 @@ export const App: React.FC = () => {
     }
   };
 
+  // Live-edit a fixture (drag / resize) on the 2D store map
+  const handleShelfChange = (
+    id: string,
+    patch: Partial<Pick<Shelf, 'x' | 'y' | 'width' | 'height'>>
+  ) => {
+    setStoreMap((prev) =>
+      prev
+        ? { ...prev, shelves: prev.shelves.map((sh) => (sh.id === id ? { ...sh, ...patch } : sh)) }
+        : prev
+    );
+  };
+
+  // Persist the edited layout once a drag / resize gesture ends
+  const handleShelfCommit = async () => {
+    if (!storeMap) return;
+    try {
+      await fetch(`/api/store_map/${selectedVideoId}/shelves`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ shelves: storeMap.shelves })
+      });
+    } catch (err) {
+      console.error('Failed to save fixture layout:', err);
+    }
+  };
+
   // Video time synchronization
   const handleTimeUpdate = (time: number) => {
     setCurrentTime(time);
@@ -331,6 +358,8 @@ export const App: React.FC = () => {
               tracks={tracks}
               currentTime={currentTime}
               heatmapConfig={heatmapConfig}
+              onShelfChange={handleShelfChange}
+              onShelfCommit={handleShelfCommit}
             />
           </div>
 
